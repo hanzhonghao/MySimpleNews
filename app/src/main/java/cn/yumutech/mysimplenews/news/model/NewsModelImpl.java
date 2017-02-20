@@ -7,6 +7,7 @@ import cn.yumutech.mysimplenews.beans.NewsDetailBean;
 import cn.yumutech.mysimplenews.commons.Urls;
 import cn.yumutech.mysimplenews.news.NewsJsonUtils;
 import cn.yumutech.mysimplenews.news.widget.NewsFragment;
+import cn.yumutech.mysimplenews.utils.LogUtils;
 import cn.yumutech.mysimplenews.utils.OkHttpUtils;
 
 /**
@@ -66,6 +67,7 @@ public class NewsModelImpl implements NewsModel {
     private String getDetailUrl(String docid) {
         StringBuffer sb = new StringBuffer(Urls.NEW_DETAIL);
         sb.append(docid).append(Urls.END_DETAIL_URL);
+        LogUtils.d("Test++++++++++++++++++++++++++++++++++++",sb.toString());
         return sb.toString();
     }
 

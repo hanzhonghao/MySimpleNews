@@ -49,7 +49,7 @@ public class NewsDetailActivity extends SwipeBackActivity implements NewsDetailV
         mSwipeBackLayout.setEdgeTrackingEnabled(SwipeBackLayout.EDGE_LEFT);
 
         mNews = (NewsBean) getIntent().getSerializableExtra("news");
-        System.out.println("1111111"+ mNews);
+        LogUtils.d("Test:",mNews+"");
         CollapsingToolbarLayout collapsingToolbar = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
         collapsingToolbar.setTitle(mNews.getTitle());
 
