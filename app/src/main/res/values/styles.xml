@@ -12,4 +12,20 @@
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
         </style>
+
+    <style name="weacher_title">
+        <item name="android:textSize">21.0sp</item>
+        <item name="android:textColor">@color/icons</item>
+    </style>
+
+    <style name="weacher_temp">
+        <item name="android:textSize">18.0sp</item>
+        <item name="android:textColor">@color/icons</item>
+    </style>
+
+    <style name="weacher_weather">
+        <item name="android:textSize">16.0sp</item>
+        <item name="android:textColor">@color/icons</item>
+    </style>
+
 </resources>
