@@ -54,19 +54,24 @@ public class WeatherModelImpl implements WeatherModel {
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (context.checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
                     && context.checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-                LogUtils.e(TAG, "location failure.");
+                LogUtils.e(TAG, "location failure1.");
                 listener.onFailure("location failure.", null);
                 return;
             }
         }
         Location location = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+        LogUtils.e(TAG, "location :"+location);
         if(location == null) {
-            LogUtils.e(TAG, "location failure.");
+            LogUtils.e(TAG, "location failure2.");
             listener.onFailure("location failure.", null);
             return;
         }
-        double latitude = location.getLatitude();     //经度
-        double longitude = location.getLongitude(); //纬度
+//        double latitude = location.getLatitude();     //经度
+//        double longitude = location.getLongitude(); //纬度
+
+        double latitude = 104.30214000000001;     //经度
+        double longitude = 30.60949;
+        System.out.println("======================latitude :"+latitude+"longitude:"+longitude );
         String url = getLocationURL(latitude, longitude);
         OkHttpUtils.ResultCallback<String> callback = new OkHttpUtils.ResultCallback<String>() {
             @Override
@@ -91,8 +96,9 @@ public class WeatherModelImpl implements WeatherModel {
 
     private String getLocationURL(double latitude, double longitude) {
         StringBuffer sb = new StringBuffer(Urls.INTERFACE_LOCATION);
-        sb.append("?output=json").append("&referer=32D45CBEEC107315C553AD1131915D366EEF79B4");
-        sb.append("&location=").append(latitude).append(",").append(longitude);
+        sb.append("?ak=AmPUmmyd48S0WIl9889YPb4hSCePCB4i").append("&mcode=11:FE:9B:D1:04:1C:C4:6A:8F:49:8E:CF:BA:4D:AA:E7:67:2C:BB:B4;cn.yumutech.mysimplenews")
+                .append("&callback=renderReverse");
+        sb.append("&location=").append(latitude).append(",").append(longitude).append("&output=json&pois=1");
         LogUtils.d(TAG, sb.toString());
         return sb.toString();
     }
